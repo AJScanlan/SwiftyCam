@@ -38,6 +38,19 @@ open class SwiftyCamViewController: UIViewController {
 
 	/// Enumeration for video quality of the capture session. Corresponds to a AVCaptureSessionPreset
 
+    public enum Gesture {
+
+        case Pan
+
+        case Pinch
+
+        case DoubleTap
+
+        case SingleTap
+
+    }
+
+    /// Enumeration for various gesture recognizers. Used to add gestures from child ViewControllers
 
 	public enum VideoQuality {
 
@@ -1181,25 +1194,37 @@ extension SwiftyCamViewController {
 	- Parameter view: View to add gesture recognzier
 
 	*/
+    public func addGestureRecognizers(_ gesture: Gesture) {
+//        switch gesture {
+//        case .Pinch:
+//            pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(zoomGesture(pinch:)))
+//            pinchGesture.delegate = self
+//            previewLayer.addGestureRecognizer(pinchGesture)
+//        case .SingleTap:
+//            let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(singleTapGesture(tap:)))
+//            singleTapGesture.numberOfTapsRequired = 1
+//            singleTapGesture.delegate = self
+//            previewLayer.addGestureRecognizer(singleTapGesture)
+//        case .DoubleTap:
+//            let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapGesture(tap:)))
+//            doubleTapGesture.numberOfTapsRequired = 2
+//            doubleTapGesture.delegate = self
+//            previewLayer.addGestureRecognizer(doubleTapGesture)
+//
+//        default:
+//            <#code#>
+//        }
+//
+//
+//
+//
+//
+//
+//        panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGesture(pan:)))
+//        panGesture.delegate = self
+//        previewLayer.addGestureRecognizer(panGesture)
 
-	fileprivate func addGestureRecognizers() {
-		pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(zoomGesture(pinch:)))
-		pinchGesture.delegate = self
-		previewLayer.addGestureRecognizer(pinchGesture)
-
-		let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(singleTapGesture(tap:)))
-		singleTapGesture.numberOfTapsRequired = 1
-		singleTapGesture.delegate = self
-		previewLayer.addGestureRecognizer(singleTapGesture)
-
-		let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(doubleTapGesture(tap:)))
-		doubleTapGesture.numberOfTapsRequired = 2
-		doubleTapGesture.delegate = self
-		previewLayer.addGestureRecognizer(doubleTapGesture)
-        
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGesture(pan:)))
-        panGesture.delegate = self
-        previewLayer.addGestureRecognizer(panGesture)
+        // We don't want any gesture recognizers for now
 	}
 }
 
